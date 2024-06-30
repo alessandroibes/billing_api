@@ -1,4 +1,3 @@
-import asyncio
 import fakeredis.aioredis
 import pytest
 import sys

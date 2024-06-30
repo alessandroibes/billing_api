@@ -28,7 +28,6 @@ class UploadUseCase():
             file_hash = hashlib.sha256(data).hexdigest()
 
             boletos_dict = Utils.read_csv(data)
-            logger.info(f"boletos_dict: {boletos_dict}")
 
             number_of_boletos = len(boletos_dict)
             logger.info(f"Processing file received with {number_of_boletos} items.")
@@ -47,11 +46,11 @@ class UploadUseCase():
 
                 try:
                     if debt_id not in set_of_processed_boletos:
-                        await Billing.process_billing(
-                                billing_data=billing_data,
-                                using_billing_service=BoletoService,
-                                using_communication_service=EmailService
-                            )
+                        Billing.process_billing(
+                            billing_data=billing_data,
+                            using_billing_service=BoletoService,
+                            using_communication_service=EmailService
+                        )
                         processed_items += 1
                         set_of_processed_boletos.add(debt_id)
                         pipe.sadd(file_hash, debt_id)
@@ -72,7 +71,7 @@ class UploadUseCase():
         except Exception as ex:
              raise ProcessFileException(ex)
         finally:
-            await redis.aclose()
+            await redis.close()
 
             end_time = time.time()
             execution_time = end_time - start_time

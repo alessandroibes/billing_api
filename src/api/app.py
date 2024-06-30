@@ -43,8 +43,7 @@ def __configure_logger(app: FastAPI):
 async def lifespan(app: FastAPI):
     app.state.redis = await get_redis_client()
     yield
-    app.state.redis.close()
-    await app.state.redis.wait_closed()
+    await app.state.redis.close()
 
 
 async def get_redis_client():

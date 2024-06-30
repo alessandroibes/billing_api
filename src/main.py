@@ -1,5 +1,3 @@
-import sys
-import os
 import uvicorn
 
 from api.app import create_app

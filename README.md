@@ -13,8 +13,9 @@ O projeto possui um endpoint `/upload/`que recebe um arquivo `.csv` e gera bolet
 
 ### Passos para executar pelo Docker
 1. Clone o repositório
-2. Execute `docker-compose up --build` para iniciar o serviço
-3. Acesse a API em `http://localhost:8000`
+2. Entre na raiz do projeto executando `cd billing_api`
+3. Execute `docker-compose up --build` para iniciar o serviço
+4. Acesse a API em `http://localhost:8000`
 
 ### Passos para executar a aplicação localmente
 1. Clone o repositório
@@ -27,11 +28,11 @@ O projeto possui um endpoint `/upload/`que recebe um arquivo `.csv` e gera bolet
 6. Execute `uvicorn main:app --reload`
 7. Acesse a API em `http://localhost:8000`
 
-### Passos para rodar os testes
+### Passos para testar a aplicação pelo Docker
 1. Clone o repositório
-2. Crie um ambiente virtual
-3. Instale as dependências executando `pip install -r src/dependencies/requirements-dev.txt`
-3. Execute `pytest` do terminal
+2. Entre na raiz do projeto executando `cd billing_api`
+3. Execute `docker-compose run tests` para rodar os testes
+4. Os resultados dos testes serão exibidos no terminal
 
 ## Estrutura do Projeto
 - `src/api/`: Contém todo o código da aplicação

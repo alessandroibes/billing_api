@@ -4,6 +4,6 @@ import os
 
 class BaseConfig():
     LOGS_LEVEL = logging.INFO
-    REDIS_HOST = "localhost"
-    REDIS_PORT = "16379"
+    REDIS_HOST = "redis"
+    REDIS_PORT = "6379"
     TESTING: bool = os.getenv("TESTING", "0") == "1"
